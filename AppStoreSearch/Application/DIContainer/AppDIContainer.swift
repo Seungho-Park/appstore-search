@@ -9,4 +9,8 @@ import Foundation
 
 final class AppDIContainer {
     
+    
+    func makeAppStoreSearchViewModel()-> AppStoreSearchViewModel {
+        return .init()
+    }
 }
