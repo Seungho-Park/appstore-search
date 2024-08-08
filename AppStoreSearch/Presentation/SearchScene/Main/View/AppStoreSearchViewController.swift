@@ -14,8 +14,12 @@ class AppStoreSearchViewController: UIViewController, ViewModelBindable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .cyan
-        view.accessibilityIdentifier = SceneIdentifier.search
+        self.view.backgroundColor = .cyan
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
     }
     
     func bind() {
