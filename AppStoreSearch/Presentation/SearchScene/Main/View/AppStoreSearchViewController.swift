@@ -8,21 +8,20 @@
 import Foundation
 import UIKit
 
-class AppStoreSearchViewController: UIViewController, ViewModelBindable {
-    var viewModel: AppStoreSearchViewModel!
+class AppStoreSearchViewController: BaseViewController<AppStoreSearchViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .cyan
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
     }
     
-    func bind() {
+    override func bind() {
+        super.bind()
         
     }
 }

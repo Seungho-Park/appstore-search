@@ -25,6 +25,6 @@ final class AppCoordinator: Coordinator {
     
     func start() {
         let vc = AppStoreSearchViewController.create(with: .init())
-        navigationController.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: true)
     }
 }
