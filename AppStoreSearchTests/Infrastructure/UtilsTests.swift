@@ -11,7 +11,7 @@ final class UtilsTests: XCTestCase {
     func test_EncodableToDictionary() {
         let expectedResult: [String:String] = ["name":"iOS"]
         
-        let mock = MockRequestData(name: "iOS")
+        let mock = MockCodableData(name: "iOS")
         let sut = mock.toDictionary() as? [String:String]
         
         XCTAssertEqual(expectedResult, sut)

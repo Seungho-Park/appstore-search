@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct MockRequestData: Encodable {
+struct MockCodableData: Codable {
     let name: String
 }

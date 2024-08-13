@@ -8,5 +8,5 @@
 import Foundation
 
 protocol NetworkResponseDecoder {
-    func decode<T: Decodable>(_ data: Data)-> T
+    func decode<T: Decodable>(_ data: Data) throws -> T
 }
