@@ -77,7 +77,7 @@ final class NetworkServiceTests: XCTestCase {
         XCTAssertEqual(executeCount, 1)
     }
     
-    func test_whenOccurNSURLErrorNotConnect_shouldReturnConnectionRefuseError() {
+    func test_whenOccurNSURLErrorNotConnect_shouldReturnConnectionRefusedError() {
         //given
         var executeCount = 0
         let expectation = XCTestExpectation(description: "Network Task Tests.")
