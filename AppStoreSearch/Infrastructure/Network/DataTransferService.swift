@@ -72,7 +72,7 @@ final class DefaultDataTransferService: DataTransferService {
     
     private func decode<T: Decodable>(data: Data?, decoder: NetworkResponseDecoder)-> Result<T, DataTransferError> {
         do {
-            guard let data = data else { return .failure(.noResponse) }
+            guard let data = data, !data.isEmpty else { return .failure(.noResponse) }
             let result: T = try decoder.decode(data)
             return .success(result)
         } catch {
