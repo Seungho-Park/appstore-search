@@ -7,6 +7,8 @@
 
 import Foundation
 import UIKit
+import FlexLayout
+import PinLayout
 
 class BaseViewController<VM: ViewModel>: UIViewController, ViewModelBindable {
     var viewModel: VM!
@@ -16,7 +18,6 @@ class BaseViewController<VM: ViewModel>: UIViewController, ViewModelBindable {
         print("\(#function)")
         
         configure()
-        bind()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +43,9 @@ class BaseViewController<VM: ViewModel>: UIViewController, ViewModelBindable {
     
     func configure() {
         print("\(#function)")
+        
+        //메인 화면을 제외한 부분은 LargeTitle을 사용하지 않음.
+        self.navigationItem.largeTitleDisplayMode = .never
     }
     
     func bind() {

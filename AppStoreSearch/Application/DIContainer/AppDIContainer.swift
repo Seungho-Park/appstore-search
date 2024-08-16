@@ -9,6 +9,11 @@ import Foundation
 
 final class AppDIContainer {
     
+    private lazy var dataTransferService: DataTransferService = {
+        let config = NetworkConfig(baseUrl: "https://itunes.apple.com/")
+        let networkService = DefaultNetworkService(config: config)
+        return DefaultDataTransferService(service: networkService)
+    }()
     
     func makeAppStoreSearchViewModel()-> AppStoreSearchViewModel {
         return .init()

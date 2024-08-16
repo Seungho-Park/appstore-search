@@ -12,3 +12,15 @@ protocol NetworkConfigurable {
     var headers: [String:String] { get }
     var queryParameters: [String:Any] { get }
 }
+
+final class NetworkConfig: NetworkConfigurable {
+    let baseUrl: String
+    let headers: [String : String]
+    let queryParameters: [String : Any]
+    
+    init(baseUrl: String, headers: [String : String] = [:], queryParameters: [String : Any] = [:]) {
+        self.baseUrl = baseUrl
+        self.headers = headers
+        self.queryParameters = queryParameters
+    }
+}

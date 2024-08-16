@@ -21,6 +21,7 @@ enum AppScene: Scene {
         case .search(let viewModel):
             let vc = AppStoreSearchViewController.create(with: viewModel)
             vc.view.accessibilityIdentifier = SceneIdentifier.search
+            vc.navigationItem.largeTitleDisplayMode = .always
             return vc
         }
     }
