@@ -66,4 +66,8 @@ final class AppCoordinator: Coordinator {
         let coordinator = diContainer.makeSearchSceneCoordinator(navigationController: navigationController)
         coordinator.start()
     }
+    
+    deinit {
+        print("\(Self.self) - \(#function)")
+    }
 }

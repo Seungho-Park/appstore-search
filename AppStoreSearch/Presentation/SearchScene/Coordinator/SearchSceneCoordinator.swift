@@ -8,14 +8,24 @@
 import Foundation
 import UIKit
 
+protocol SearchSceneCoordinatorDependencies {
+    
+}
+
 final class SearchSceneCoordinator: Coordinator {
     let navigationController: UINavigationController
+    private let dependencies: SearchSceneCoordinatorDependencies
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, dependencies: SearchSceneCoordinatorDependencies) {
         self.navigationController = navigationController
+        self.dependencies = dependencies
     }
     
     func start() {
         
+    }
+    
+    deinit {
+        print("\(Self.self) - \(#function)")
     }
 }

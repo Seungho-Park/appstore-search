@@ -13,13 +13,17 @@ struct MockEndPoint<R>: NetworkResponseRequestable {
     var path: String
     var method: HttpMethod
     var headers: [String : String] = [:]
+    var queryParameterEncodable: Encodable? = nil
     var queryParameters: [String : Any] = [:]
-    var httpEncodableBody: Encodable? = nil
-    var bodyQueryParameters: [String : Any] = [:]
+    var bodyParameterEncodable: Encodable? = nil
+    var bodyParameters: [String : Any] = [:]
     var decoder: NetworkResponseDecoder = JSONResponseDecoder()
     
-    init(path: String, method: HttpMethod) {
+    init(path: String, method: HttpMethod, queryParameterEncodable: Encodable? = nil, queryParameters: [String : Any] = [:], bodyParameterEncodable: Encodable? = nil) {
         self.path = path
         self.method = method
+        self.queryParameterEncodable = queryParameterEncodable
+        self.queryParameters = queryParameters
+        self.bodyParameterEncodable = bodyParameterEncodable
     }
 }

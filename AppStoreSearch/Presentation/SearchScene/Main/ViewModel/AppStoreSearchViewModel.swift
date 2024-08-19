@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 extension AppStoreSearchViewModel: ViewModel {
     struct Input {
@@ -22,5 +24,11 @@ extension AppStoreSearchViewModel: ViewModel {
 }
 
 class AppStoreSearchViewModel {
+    let disposeBag: DisposeBag = DisposeBag()
     
+    let title: Driver<String>
+    
+    init(title: String) {
+        self.title = Observable.just(title).asDriver(onErrorJustReturn: "N/A")
+    }
 }

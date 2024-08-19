@@ -20,6 +20,14 @@ final class SearchSceneDIContainer {
     }
     
     func makeSearchSceneCoordinator(navigationController: UINavigationController)-> SearchSceneCoordinator {
-        return SearchSceneCoordinator(navigationController: navigationController)
+        return SearchSceneCoordinator(navigationController: navigationController, dependencies: self)
     }
+    
+    deinit {
+        print("\(Self.self) - \(#function)")
+    }
+}
+
+extension SearchSceneDIContainer: SearchSceneCoordinatorDependencies {
+    
 }

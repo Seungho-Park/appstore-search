@@ -13,26 +13,29 @@ final class EndPoint<R>: NetworkResponseRequestable {
     var path: String
     var method: HttpMethod
     var headers: [String : String]
+    var queryParameterEncodable: Encodable?
     var queryParameters: [String : Any]
-    var httpEncodableBody: (any Encodable)?
-    var bodyQueryParameters: [String : Any]
+    var bodyParameterEncodable: Encodable?
+    var bodyParameters: [String : Any]
     var decoder: NetworkResponseDecoder
     
     init(
         path: String,
         method: HttpMethod = .get,
         headers: [String : String] = [:],
+        queryParameterEncodable: Encodable? = nil,
         queryParameters: [String : Any] = [:],
-        httpEncodableBody: (any Encodable)? = nil,
-        bodyQueryParameters: [String : Any] = [:],
+        bodyParameterEncodable: (any Encodable)? = nil,
+        bodyParameters: [String : Any] = [:],
         decoder: NetworkResponseDecoder = JSONResponseDecoder()
     ) {
         self.path = path
         self.method = method
         self.headers = headers
+        self.queryParameterEncodable = queryParameterEncodable
         self.queryParameters = queryParameters
-        self.httpEncodableBody = httpEncodableBody
-        self.bodyQueryParameters = bodyQueryParameters
+        self.bodyParameterEncodable = bodyParameterEncodable
+        self.bodyParameters = bodyParameters
         self.decoder = decoder
     }
 }

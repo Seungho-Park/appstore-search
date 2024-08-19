@@ -11,9 +11,10 @@ protocol NetworkRequestable {
     var path: String { get }
     var method: HttpMethod { get }
     var headers: [String:String] { get }
+    var queryParameterEncodable: Encodable? { get }
     var queryParameters: [String:Any] { get }
-    var httpEncodableBody: Encodable? { get }
-    var bodyQueryParameters: [String:Any] { get }
+    var bodyParameterEncodable: Encodable? { get }
+    var bodyParameters: [String:Any] { get }
 }
 
 extension NetworkRequestable {
@@ -24,8 +25,15 @@ extension NetworkRequestable {
             throw NSError()
         }
         
-        var queryItems: [URLQueryItem] = config.queryParameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
-        queryItems.append(contentsOf: queryParameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") })
+        let queryParameters = queryParameterEncodable?.toDictionary() ?? queryParameters
+        var queryItems: [URLQueryItem] = .init()
+        
+        queryParameters.forEach {
+            queryItems.append(.init(name: $0.key, value: "\($0.value)"))
+        }
+        config.queryParameters.forEach {
+            queryItems.append(.init(name: $0.key, value: "\($0.value)"))
+        }
         
         urlComponents.queryItems = queryItems
         
@@ -47,7 +55,7 @@ extension NetworkRequestable {
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         
-        let httpBody = httpEncodableBody?.toDictionary() ?? bodyQueryParameters
+        let httpBody = bodyParameterEncodable?.toDictionary() ?? bodyParameters
         if !httpBody.isEmpty {
             request.httpBody = try? JSONSerialization.data(withJSONObject: httpBody)
         }

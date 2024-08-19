@@ -18,4 +18,8 @@ final class AppDIContainer {
     func makeSearchSceneDIContainer()-> SearchSceneDIContainer {
         return SearchSceneDIContainer(dependencies: .init())
     }
+    
+    deinit {
+        print("\(Self.self) - \(#function)")
+    }
 }

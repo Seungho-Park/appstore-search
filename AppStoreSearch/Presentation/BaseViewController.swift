@@ -9,9 +9,12 @@ import Foundation
 import UIKit
 import FlexLayout
 import PinLayout
+import RxSwift
+import RxCocoa
 
 class BaseViewController<VM: ViewModel>: UIViewController, ViewModelBindable {
     var viewModel: VM!
+    private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,5 +53,9 @@ class BaseViewController<VM: ViewModel>: UIViewController, ViewModelBindable {
     
     func bind() {
         print("\(#function)")
+        
+        viewModel.title
+            .drive(navigationItem.rx.title)
+            .disposed(by: disposeBag)
     }
 }

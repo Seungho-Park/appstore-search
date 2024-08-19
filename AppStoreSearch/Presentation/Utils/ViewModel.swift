@@ -6,10 +6,15 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
 
 protocol ViewModel {
     associatedtype Input
     associatedtype Output
     
     func transform(_ input: Input)-> Output
+    
+    var disposeBag: DisposeBag { get }
+    var title: Driver<String> { get }
 }
