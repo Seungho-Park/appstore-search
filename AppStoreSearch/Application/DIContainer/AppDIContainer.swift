@@ -15,7 +15,7 @@ final class AppDIContainer {
         return DefaultDataTransferService(service: networkService)
     }()
     
-    func makeAppStoreSearchViewModel()-> AppStoreSearchViewModel {
-        return .init()
+    func makeSearchSceneDIContainer()-> SearchSceneDIContainer {
+        return SearchSceneDIContainer(dependencies: .init())
     }
 }

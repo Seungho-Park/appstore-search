@@ -62,6 +62,8 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        transition(scene: AppScene.search(diContainer.makeAppStoreSearchViewModel()), style: .root, animated: false)
+        let diContainer = diContainer.makeSearchSceneDIContainer()
+        let coordinator = diContainer.makeSearchSceneCoordinator(navigationController: navigationController)
+        coordinator.start()
     }
 }

@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Game, App, Story, etc..." : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "게임, 앱, 스토리 등"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

@@ -12,10 +12,11 @@ final class AppAppearance {
     private init() {  }
     
     static func configure() {
-        if #available(iOS 15.0, *) {
+        UINavigationBar.appearance().prefersLargeTitles = true
+        
+        if #available(iOS 13.0, *) {
             let standardAppearance = UINavigationBarAppearance()
             standardAppearance.configureWithOpaqueBackground()
-            standardAppearance.backgroundColor = UIColor(red: 37/255, green: 37/255, blue: 37/255, alpha: 1)
             
             let scrollAppearance = UINavigationBarAppearance()
             scrollAppearance.configureWithOpaqueBackground()
@@ -27,7 +28,5 @@ final class AppAppearance {
         } else {
             
         }
-        
-        UINavigationBar.appearance().prefersLargeTitles = true
     }
 }
