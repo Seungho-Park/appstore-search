@@ -55,9 +55,7 @@ final class DefaultNetworkService: NetworkService {
     }
     
     private func request(request: URLRequest, completion: @escaping CompletionHandler)-> URLSessionTask {
-        let task = sessionManager.request(with: request) { [weak self] data, response, error in
-            guard let self = self else { return }
-            
+        let task = sessionManager.request(with: request) { data, response, error in
             if let httpResponse = response as? HTTPURLResponse {
                 if 200..<300 ~= httpResponse.statusCode {
                     completion(.success(data))
@@ -65,7 +63,7 @@ final class DefaultNetworkService: NetworkService {
                     completion(.failure(.error(statusCode: httpResponse.statusCode, data: data)))
                 }
             } else if let error = error {
-                completion(.failure(resolve(error: error)))
+                completion(.failure(self.resolve(error: error)))
             } else {
                 completion(.failure(.connectionRefused))
             }
